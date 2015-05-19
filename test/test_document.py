@@ -19,16 +19,17 @@ LOREM_IPSUM = textwrap.dedent('''\
 class TestIambic(unittest.TestCase):
     def setUp(self):
         doc = ia.document('Foo document')
-        doc.style = dict(width=30, columnsep='|', itemsep=['%'*30])
+        doc.style = dict(width=20, columnsep='|', itemsep=['%'*30])
         p1 = ia.paragraph('\n'.join(LOREM_IPSUM.splitlines()[:3]))
         doc.items.append(p1)
         #import pdb; pdb.set_trace()
         doc.items.append('AFX')
         t1 = ia.table('Foo table')
         t1.header_row = ia.row(['FIRST', 'SECOND', 'THIRD'])
-        r = ia.row(['foo', 'bar'])
+        #import pdb; pdb.set_trace()
+        r = ia.row(['1234567', 'bar'])
         r.items.append('fRRRRRRRR')
-        r[1] = 'xx011111%EU'
+        r[1] = 'xx011111%EUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU'
         t1.rows.append(r)
         t1.rows.append(ia.row(['this', 'is', 'something']))
         doc.items.append(t1)
@@ -37,7 +38,10 @@ class TestIambic(unittest.TestCase):
         self.doc = doc
 
     def test_dummy(self):
-        print self.doc.tostring()
+        print
+        print ia.tostring(self.doc)
 
-    def test_str(self):
-        print str(self.doc)
+    #def test_str(self):
+        #import pdb; pdb.set_trace()
+    #    print tostring(self.doc)
+        
